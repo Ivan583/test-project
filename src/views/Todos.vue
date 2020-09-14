@@ -5,7 +5,8 @@
     <hr />
     <AddTodo @add-todo="addTodo" />
     <hr />
-    <TodoList :todo="todos" @remove-elem="removeElem" />
+    <TodoList v-if="todos.length" :todo="todos" @remove-elem="removeElem" />
+    <p v-else>No todos!</p>
   </div>
 </template>
 
