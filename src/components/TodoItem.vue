@@ -1,8 +1,8 @@
 <template>
   <div>
     <li>
-      <span>
-        <input type="checkbox" />
+      <span :class="{done: elem.completed}">
+        <input type="checkbox" @change="elem.completed = !elem.completed" />
         <strong>{{ elem.id }}</strong>
         {{ elem.title }}
       </span>
