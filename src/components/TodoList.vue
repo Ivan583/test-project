@@ -1,7 +1,13 @@
 <template>
   <div>
     <ul>
-      <TodoItem v-for="item in todo" :key="item.id" :elem="item" @remove-elem="removeElem" />
+      <TodoItem
+        v-for="(item, i) in todo"
+        :key="item.id"
+        :elem="item"
+        :index="i"
+        @remove-elem="removeElem"
+      />
     </ul>
   </div>
 </template>

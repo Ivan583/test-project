@@ -3,7 +3,7 @@
     <li>
       <span :class="{done: elem.completed}">
         <input type="checkbox" @change="elem.completed = !elem.completed" />
-        <strong>{{ elem.id }}</strong>
+        <strong>{{ index + 1 }}</strong>
         {{ elem.title }}
       </span>
       <button @click="$emit('remove-elem', elem.id)">&times;</button>
@@ -17,7 +17,8 @@ export default {
     elem: {
       type: Object,
       required: true
-    }
+    },
+    index: Number
   }
 };
 </script>
