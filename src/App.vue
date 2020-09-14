@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Todo application</h1>
     <hr />
-    <TodoList :todo="todos" />
+    <TodoList :todo="todos" @remove-elem="removeElem" />
   </div>
 </template>
 
@@ -21,6 +21,11 @@ export default {
   },
   components: {
     TodoList
+  },
+  methods: {
+    removeElem(id) {
+      this.todos = this.todos.filter(t => t.id != id);
+    }
   }
 };
 </script>

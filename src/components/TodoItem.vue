@@ -6,7 +6,7 @@
         <strong>{{ elem.id }}</strong>
         {{ elem.title }}
       </span>
-      <button>&times;</button>
+      <button @click="$emit('remove-elem', elem.id)">&times;</button>
     </li>
   </div>
 </template>
