@@ -1,6 +1,13 @@
 <template>
   <div>
-    <li>{{ elem.title }}</li>
+    <li>
+      <span>
+        <input type="checkbox" />
+        <strong>{{ elem.id }}</strong>
+        {{ elem.title }}
+      </span>
+      <button>&times;</button>
+    </li>
   </div>
 </template>
 
