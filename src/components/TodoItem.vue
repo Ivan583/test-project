@@ -4,7 +4,7 @@
       <span :class="{done: elem.completed}">
         <input type="checkbox" @change="elem.completed = !elem.completed" />
         <strong>{{ index + 1 }}</strong>
-        {{ elem.title }}
+        {{ elem.title | uppercase }}
       </span>
       <button @click="$emit('remove-elem', elem.id)">&times;</button>
     </li>
@@ -19,6 +19,11 @@ export default {
       required: true
     },
     index: Number
+  },
+  filters: {
+    uppercase(value) {
+      return value.toUpperCase();
+    }
   }
 };
 </script>

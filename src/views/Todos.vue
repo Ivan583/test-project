@@ -4,6 +4,11 @@
     <router-link to="/">Home</router-link>
     <hr />
     <AddTodo @add-todo="addTodo" />
+    <!-- <select>
+      <option value="all">All</option>
+      <option value="completed">Completed</option>
+      <option value="not-completed">Not Completed</option>
+    </select>-->
     <hr />
     <Loader v-if="loading" />
     <TodoList v-else-if="todos.length" :todo="todos" @remove-elem="removeElem" />
@@ -38,6 +43,14 @@ export default {
     AddTodo,
     Loader
   },
+  // computed: {
+  //   filteredTodos() {
+  //     if (this.filter === "all") return this.todos;
+  //     if (this.filter === "completed")
+  //       return this.todos.filter(t => t.completed);
+  //     return this.todos.filter(t => !t.completed);
+  //   }
+  // },
   methods: {
     removeElem(id) {
       this.todos = this.todos.filter(t => t.id != id);
