@@ -4,14 +4,14 @@
     <router-link to="/">Home</router-link>
     <hr />
     <AddTodo @add-todo="addTodo" />
-    <!-- <select>
+    <select v-model="filter">
       <option value="all">All</option>
       <option value="completed">Completed</option>
       <option value="not-completed">Not Completed</option>
-    </select>-->
+    </select>
     <hr />
     <Loader v-if="loading" />
-    <TodoList v-else-if="todos.length" :todo="todos" @remove-elem="removeElem" />
+    <TodoList v-else-if="filteredTodos.length" :todo="filteredTodos" @remove-elem="removeElem" />
     <p v-else>No todos!</p>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
   data() {
     return {
       todos: [],
-      loading: true
+      loading: true,
+      filter: "all"
     };
   },
   mounted() {
@@ -43,14 +44,19 @@ export default {
     AddTodo,
     Loader
   },
-  // computed: {
-  //   filteredTodos() {
-  //     if (this.filter === "all") return this.todos;
-  //     if (this.filter === "completed")
-  //       return this.todos.filter(t => t.completed);
-  //     return this.todos.filter(t => !t.completed);
+  // watch: {
+  //   filter(value) {
+  //     console.log(value);
   //   }
   // },
+  computed: {
+    filteredTodos() {
+      if (this.filter === "all") return this.todos;
+      if (this.filter === "completed")
+        return this.todos.filter(t => t.completed);
+      return this.todos.filter(t => !t.completed);
+    }
+  },
   methods: {
     removeElem(id) {
       this.todos = this.todos.filter(t => t.id != id);
